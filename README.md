@@ -3,6 +3,11 @@ Ever accidentally 'rm'-ed something and then had to redo HOURS of work because i
 
 **trash** is a simple script you can add to your path (or alias to rm for those of us too stuborn to change our habbits) that moves things into the Gnome/Budgie desktop's trash can rather than deleting them forever.
 
-The *only* thing required by you is to replace occurances of %%USERNAME%% in the file with your username to make the paths accurate. (I might make an install script that handles that bit but I'm not sure).
+The *only* things required by you is to:
+ 1. Replace occurances of %%USERNAME%% in the file with your username to make the paths accurate.
+ 2. Make file executable.
+ 3. Move file into your $PATH.
+
+(I might make an install script that handles that bit but I'm not sure).
 
 Enjoy!
