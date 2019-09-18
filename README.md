@@ -1,2 +1,6 @@
 # command-line-trash
-Integrates with the gnome/budgie desktop's trash can so you can trash things from the command line
+Ever accidentally 'rm'-ed something and then had to redo HOURS of work because it just disappeared rather than going into the trash? Well that's exactly what I did which prompted me to create this little tool.
+
+**trash** is a simple script you can add to your path (or alias to rm for those of us too stuborn to change our habbits) that moves things into the Gnome/Budgie desktop's trash can rather than deleting them forever.
+
+Enjoy!
