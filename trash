@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# this should replace my usage of rm to integrate into the gnome/budgie trashcan
+
+if [ -z "$1" ]; then
+  echo "No paths given to trash"
+  exit
+fi
+
+# get file/directory path for Info file
+# $HOME/.local/share/Trash/info/file_name.trashinfo
+TARGET_PATH="$(readlink -f $1)"
+#verify path really exists
+EXISTS=false;
+if test -f "$TARGET_PATH"; then
+  EXISTS=true;
+elif test -d "$TARGET_PATH"; then
+  EXISTS=true;
+fi
+
+if [ "$EXISTS" = false ]; then
+  echo "Neither a file or directory was found at :"
+  echo "$TARGET_PATH"
+  exit
+fi
+
+#make infofile
+BASENAME="$(basename "$TARGET_PATH")"
+TIMESTAMP="$(date +"%Y-%m-%dT%k:%M:%S")"
+TRASHINFOFILE="/home/%%USERNAME%%/.local/share/Trash/info/$BASENAME.trashinfo"
+echo "[Trash Info]" > "$TRASHINFOFILE"
+echo "Path=$TARGET_PATH" >> "$TRASHINFOFILE"
+echo "DeletionDate=$TIMESTAMP" >> "$TRASHINFOFILE"
+#move file into trash
+TRASHLOCATION=/home/%%USERNAME%%/.local/share/Trash/files
+mv "$TARGET_PATH" "$TRASHLOCATION"
